@@ -96,7 +96,7 @@ P/s: Bài viết chủ yếu dựa trên tài liệu chính thống của React-
 ```choco install -y nodejs.install python2 jdk8```
 
 - **Bước 3**: Cài đặt Android studio
-- **Bước 4**: Cài đặt SDK: Nên cài SDK Platform 23 vì mặc định react-native hiện tại sử dụng Android SDK Platform 23 để build ứng dụng 
+- **Bước 4**: Cài đặt SDK: Nên cài SDK Platform 23 vì mặc định react-native hiện tại sử dụng Android SDK Platform 23 để build ứng dụng
 
 
 Lưu ý: Trên hệ điều hành windows chỉ có thể build ứng dụng trên Android.
@@ -120,7 +120,7 @@ Lưu ý: Trên hệ điều hành windows chỉ có thể build ứng dụng tr�
 ## 3. Các IDE khuyên dùng
 
 - Code: Hiện tại mình sử dụng Visual Studio Code các bạn có thể download về và cài đặt tại <https://code.visualstudio.com/> <br> Các bạn cũng có thể sử dụng bất kỳ IDE nào các bạn thích như Sublime Text Atom, Vim Editer...
-- Build ứng dụng: 
+- Build ứng dụng:
  - IOS: sử dụng Xcode (search trên store apple nhé)
  - Android: sử dụng Android studio <https://developer.android.com/studio/>
 
@@ -148,15 +148,15 @@ Khi chạy lệnh này hệ điều hành sẽ tạo một server local để bu
 
   - Không khởi tạo server để build khi run debug trên android thì chạy
  ```react-native start```
- 
+
   - Khi run Android mà không sử dụng code react-native mới nhất thì chạy dòng này (Build toàn bộ source của bạn thành 1 file và đặt nó vào trong assets, tạo các resource android tương ứng mà bạn sử dụng).
 ```
 react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
 ```
    - Khi general APK mà bị lỗi double resource thì xóa thư mục drawable trong android/app/src/main/res thì sẽ build được.
- 
+
    - Khi run app ios bị lỗi "Build input file cannot be found: '../Example/node_modules/react-native/third-party/double-conversion-1.1.6/src/strtod.cc'" thì chạy 2 dòng lệnh sau:
- 
+
  ```
 cd node_modules/react-native/scripts && ./ios-install-third-party.sh && cd ../../../
 cd node_modules/react-native/third-party/glog-0.3.5/ && ../../scripts/ios-configure-glog.sh && cd ../../../../
@@ -198,9 +198,9 @@ Component là một thành phần cơ bản trong ứng dụng react-native. M�
 - **componentWillMount()** - Hàm này sẽ bị loại bỏ ở phiên bản mới.
 
 - **render()** - Đây là hàm bắt buộc có trong component. Sau khi khởi tạo hàm này được gọi để trả về các thành phần hiển thị lên màn hình.<br>Hàm này sẽ được tự động gọi lại khi state hoặc props của nó thay đổi. Chỉ những component có sử dụng state hoặc props thì mới được gọi lại để render lại.<br><br>**Lưu ý:**
-  * Trong hàm này cũng không được sử dụng phương thức ```this.setState()```<br> 
+  * Trong hàm này cũng không được sử dụng phương thức ```this.setState()```<br>
   * Trong hàm này không nên chạy xử lý dữ liệu nhiều để không bị lag khi render (nên xử lý dữ liệu trong componentDidMount hoặc constructor).
-  
+
 - **componentDidMount()** - Hàm này sẽ được gọi ngay sau khi hàm **render()** lần đầu tiên được gọi. Thông thường trong hàm này ta có thể lấy dữ liệu từ server hoặc client để render dữ liệu ra. Khi chạy đến đây thì các phần từ đã được sinh ra rồi, ta có thể tương tác với các thành phần UI.
 
 - **componentWillReceiveProps(nextProps)** - Hàm này được gọi khi props của component được khởi tạo thay đổi.
@@ -280,7 +280,7 @@ export default class App extends Component {
 ### 6.3. Một số hàm đặc biệt
 
 - **Hàm this.setState()** - Hàm dùng để thay đổi state của component. Đây là phương thức chính để cập nhật giao diện người dùng. Khi hàm này thực thi xong thì hàm **render()** sẽ được tự động gọi lại. **Những giá trị nào của state thay đổi thì chỉ những thành phần có sử dụng biến state tương ứng đó được gọi để vẽ lại UI**.
-<br>Lưu ý: hàm này chạy bất đồng bộ nên chúng ta không nên đọc giá trị sau khi gọi hàm này. <br>Cách sử dụng: 
+<br>Lưu ý: hàm này chạy bất đồng bộ nên chúng ta không nên đọc giá trị sau khi gọi hàm này. <br>Cách sử dụng:
 
 ```javascript
 this.setState({
@@ -348,7 +348,7 @@ Giống như một ứng dụng web cơ bản, React-Native sử dụng một s�
 
 Ở ví dụ trên bạn có thể thay đổi các thuộc tính của style rồi reload lại để thấy sự thay đổi nhé.
 
-Trong ví dụ thư mục Home tôi đã chia phần Style qua một file khác để dễ quản lý (Từ các ví dụ sau trở đi, tôi sẽ chia phần style này sang 1 file khác để dễ quản lý). Bạn có thể vào đó, thử thay đổi, xóa sửa để biết được thuộc tính nào dùng để làm gì nhé. Làm nhiều phần này thì sẽ có kinh nghiệm thiết kế đẹp thôi. 
+Trong ví dụ thư mục Home tôi đã chia phần Style qua một file khác để dễ quản lý (Từ các ví dụ sau trở đi, tôi sẽ chia phần style này sang 1 file khác để dễ quản lý). Bạn có thể vào đó, thử thay đổi, xóa sửa để biết được thuộc tính nào dùng để làm gì nhé. Làm nhiều phần này thì sẽ có kinh nghiệm thiết kế đẹp thôi.
 
 Một vài lưu ý:
 
@@ -359,7 +359,7 @@ Một vài lưu ý:
 
 ## 8. Kỹ thuật Debug cơ bản
 
-Xây dựng ứng dụng React-Native khác với ứng dụng native là bạn không thể đặt break point rồi chạy và chờ chương trình nhảy vào vị trí mà bạn đợi và xem trạng thái hay biến lúc đó bằng bao nhiêu đang như thế nào. Thay vì vậy chương trình React-Native cho phép bạn in giá trị tại thời điểm đó và xuất ra màn hình console.<br> Sử dụng lệnh 
+Xây dựng ứng dụng React-Native khác với ứng dụng native là bạn không thể đặt break point rồi chạy và chờ chương trình nhảy vào vị trí mà bạn đợi và xem trạng thái hay biến lúc đó bằng bao nhiêu đang như thế nào. Thay vì vậy chương trình React-Native cho phép bạn in giá trị tại thời điểm đó và xuất ra màn hình console.<br> Sử dụng lệnh
 ```console.log(variable)``` để in giá trị của biến bất kì (xem ví dụ phía trên để biết việc in giá trị của biến message trong state)
 
 Xcode và Android studio mặc định khi run debug sẽ xuất các log này ra trong phần All Output (Xcode), Logcat (Android Studio).
@@ -420,7 +420,7 @@ export class Components extends React.Component {
         this.clickButton = 0;
         this.clickTouchAbleOpecity = 0;
     }
-    
+
     onPressButtonDemo() {
         this.clickButton++;
         this.setState({
@@ -488,8 +488,8 @@ export class Components extends React.Component {
         return (
             <View style={Styles.containerItem}>
                 <Image
-                    style={Styles.imgLogo} 
-                    resizeMode={'contain'}  
+                    style={Styles.imgLogo}
+                    resizeMode={'contain'}
                     source={item.image}
                 />
                 <Text>{item.title}</Text>
@@ -548,7 +548,7 @@ Sau khi chạy Demo ta được UI như sau (run example thì click vào compone
 
 ![](images/demo_component.jpg)
 
-### 9.1. View 
+### 9.1. View
 Là một component cũng thường xuyên được sử dụng. Thường được sử dụng với mục đích chia các view con theo hàng dọc hoặc hàng ngang dựa vào thuộc tính flexDirection trong style là 'column/row' (dọc / ngang), hoặc sử dụng để chứa nhiều view con hoặc khi cần in ra màn hình một view không hiển thị gì hết ví dụ như trong cấu trúc toán tử:
 
 ```
@@ -655,8 +655,8 @@ renderItem(item) {
     return (
         <View style={Styles.containerItem}>
             <Image
-                style={Styles.imgLogo} 
-                resizeMode={'contain'}  
+                style={Styles.imgLogo}
+                resizeMode={'contain'}
                 source={item.image}
             />
             <Text>{item.title}</Text>
@@ -853,7 +853,7 @@ Bên gửi qua (ViewItem đóng vai trò là 1 component được tùy biến)
 />
 ```
 
-Bên nhận dữ liệu có thể sử dụng dữ liệu được truyền qua thông qua props. (Kiểu nó ném mấy cái dữ liệu qua thì bên nhận này truy xuất thông qua props) 
+Bên nhận dữ liệu có thể sử dụng dữ liệu được truyền qua thông qua props. (Kiểu nó ném mấy cái dữ liệu qua thì bên nhận này truy xuất thông qua props)
 
 ```javascript
 ...
@@ -903,7 +903,7 @@ Một vài lưu ý khi sử dụng props
 
 ## 11. Cài đặt và sử dụng thư viện
 ### 11.1. Cài đặt thư viện
-Thông thường trong React-Native sử dụng thư viện rất nhiều có lẽ vì một vài lý do: 
+Thông thường trong React-Native sử dụng thư viện rất nhiều có lẽ vì một vài lý do:
 
 - Code từ đầu thì lâu hơn.
 - Thư viện được nhiều người xây dựng nên khả năng tốt hơn so với việc mình code một mình.
@@ -915,7 +915,7 @@ Khi bạn gặp vấn đề hoặc cần làm một cái gì đó với react-na
 Ví dụ muốn làm chức năng đăng nhập với facebook thì có thể tìm: react-native login with facebook. Đa phần bạn sẽ thấy thư viện hỗ trợ nằm ngay trang đầu tiên. Hãy vào trang chính thống của thư viện để xem cách cài đặt và sử dụng thư viện. Nhớ xem lại số star và các vấn đề trước khi bạn muốn sử một thư viện nào đó trên github.
 Nếu thư viện được publish trên npmjs <https://www.npmjs.com/> thì bạn có thể cài đặt thông qua
 
-```npm install package_name``` 
+```npm install package_name```
 
 ### 11.2. Link thư viện
 Một phần khá quan trọng, sau khi bạn kéo thư viện từ npm về, thì bạn cần link thư viện đó vào app của bạn để ứng dụng có thể khởi chạy các phần code native của thư viện hoặc được quyền chạy một số tác vụ khác.
@@ -936,16 +936,16 @@ Vào dự án bạn tạo và chạy dòng lệnh sau để cài đặt thư vi�
 - Sử dụng thư viện:
 
 **- Xây dựng cấu trúc ứng dụng**: Để bạn hiểu rõ hơn về phần demo sau bạn vui lòng xem lại file index.js trong Example (Example/app/index.js). Dưới đây là phần tạo cấu trúc sườn của ứng dụng dựa vào StackNavigator của thư viện react-navigation.
-	
+
 ```javascript
 import React, { Component } from 'react';
 import { StackNavigator } from 'react-navigation';
 import { StyleSheet, View } from 'react-native';
-	
+
 // import toàn bộ các class Screen từ modules/screens (những class được xuất thông qua file modules/screens/index.js)
 import * as Screens from './modules/screens';
-	
-	
+
+
 //Tạo StackNavigator từ thư viện react-navigation
 const AppNavigator = StackNavigator({
     HOME: {
@@ -963,7 +963,7 @@ const AppNavigator = StackNavigator({
 }, {
         headerMode: "screen"
     });
-	
+
 export default class App extends Component {
     render() {
         return (
@@ -974,7 +974,7 @@ export default class App extends Component {
         );
     }
 }
-	
+
 const styles = StyleSheet.create({
     container: {
         flex: 1
@@ -990,16 +990,16 @@ HOME: {
 	screen: Screens.Home
 }
 ```
-Trong đó Screens.Home là class được import từ module screens.<br>Lưu ý dòng lệnh: 
+Trong đó Screens.Home là class được import từ module screens.<br>Lưu ý dòng lệnh:
 
-```import * as Screens from './modules/screens'; ```   
+```import * as Screens from './modules/screens'; ```
 
 Dòng lệnh này thực hiện import toàn bộ những class được xuất ra thông qua file index.js. Vì vậy nếu bạn thêm màn hình mới lưu ý vào file index.js để xuất thêm class bạn vừa tạo.
 
 **- Chuyển đổi màn hình**: có 2 cách chuyển màn hình:
 
   - Chuyển đổi và xóa toàn bộ màn hình trước đó:
-  
+
 	```
 	// chuyển qua màn hình PROPS đã khai báo trong App StackNavigator
   	let pageContinue = NavigationActions.reset({
@@ -1009,22 +1009,22 @@ Dòng lệnh này thực hiện import toàn bộ những class được xuất 
   	this.props.navigation.dispatch(pageContinue);
 	```
    	 params: {} - Đây là phần để bạn truyền dữ liệu qua màn hình kế tiếp. Bạn có thể truyền qua cho màn hình tiếp theo một đối tượng theo cú pháp này.
-   	 
+
   - Chuyển đổi và giữ lại màn hình trước để quay lại
-   	 
+
 	```
 	// chuyển qua màn hình PROPS đã khai báo trong App StackNavigator
-	this.props.navigation.navigate("PROPS"); 
+	this.props.navigation.navigate("PROPS");
 	//or
 	this.props.navigation.navigate("PROPS", {});
 	```
-	
+
 	{} - Đây cũng là cách để bạn truyền một đối tượng qua cho màn hình kế tiếp.<br>Mặc định nếu bạn hiển thị Status bar thì sẽ có phím quay về, nhưng nếu cần thiết có thể quay về bằng cách gọi hàm sau đây:
-	 	
+
 	```this.props.navigation.goBack();```
-   	 
+
 	Hiển thị Status bar:
-	
+
 	```
 	static navigationOptions = ({ navigation }) => {
     	return {
@@ -1068,7 +1068,7 @@ export class RESTFulAPI {
 
     //Định nghĩa một api lấy language từ server.
     // Public api có sẵn tại https://api.ice5.skyx.app/get_languages
-    
+
     getLanguage() {
         let api = getBaseURL() + "get_languages";
         return this.fetchData(api);
@@ -1100,7 +1100,7 @@ export default RESTClient = new RESTFulAPI();
 
 Ở đây mình định nghĩa 1 lớp để quản lý việc trao đổi, giao tiếp giữa client và server. Hàm fetchData() là một hàm bất đồng bộ hỗ trợ gọi các phương thức RESTful.
 
-Và đây là cách chúng ta gọi hàm fetchData() và định nghĩa rõ ràng 1 api truy cập để lấy danh sách ngôn ngữ. Lưu ý: Thay vì việc mình đặt trực tiếp link <https://api.ice5.skyx.app/get_languages> thì mình lại gọi hàm getBaseURL() là để sau này có thay api, thì mình không phải đi thay nhiều chỗ, chỉ cần vào config và thay đổi là hoàn tất. 
+Và đây là cách chúng ta gọi hàm fetchData() và định nghĩa rõ ràng 1 api truy cập để lấy danh sách ngôn ngữ. Lưu ý: Thay vì việc mình đặt trực tiếp link <https://api.ice5.skyx.app/get_languages> thì mình lại gọi hàm getBaseURL() là để sau này có thay api, thì mình không phải đi thay nhiều chỗ, chỉ cần vào config và thay đổi là hoàn tất.
 
 ```javascript
 getLanguage() {
@@ -1263,9 +1263,9 @@ Toàn bộ source code của chương trình sẽ được đặt trong thư m�
   - **screens** - module chứa toàn bộ xử lý màn hình của ứng dụng
   - **views** - module chứa toàn bộ view đã được custom.
   - Và một số module mình muốn chỉnh sửa từ thư viện, thì có thể thêm vào đây để tùy biến.
-  
-  
-  
+
+
+
   ### Đến đây là kết thúc bài hướng dẫn của mình rồi. Hy vọng bài hướng dẫn sẽ giúp bạn có được những cái nhìn tổng quan về React-Native để xây dựng một ứng dụng cho riêng mình.
   ### P/S: Nếu có thời gian mình sẽ viết tiếp về cách xây dựng 1 ứng dụng đọc báo hoàn chỉnh trên Android và iOS. Cho Star để mình lấy động lực nhé.
 
